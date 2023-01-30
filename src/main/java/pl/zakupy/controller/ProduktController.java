@@ -39,19 +39,28 @@ public class ProduktController {
 
     @GetMapping("/products/add")
     public String addProduct(Model model){
+        model.addAttribute("product",new Produkt());
         return "addproduct";
     }
 
     @PostMapping("/saveproduct")
     public String saveProduct(@ModelAttribute Produkt produkt){
         produktRepository.save(produkt);
-        return "redirect:products";
+        return "redirect:/products";
     }
 
     @GetMapping("/products/delete")
-    public String deleteProduct(@RequestParam int id){
-        produktRepository.deleteById(id);
-        return "redirect:products";
+    public String deleteProduct(@RequestParam int productId){
+        produktRepository.deleteById(productId);
+        return "redirect:/products";
+    }
+
+    @GetMapping("/products/edit")
+    public String editProduct(@RequestParam int productId,
+                              Model model,
+                              @ModelAttribute Produkt produkt){
+        model.addAttribute("product",produktRepository.findById(productId));
+        return "addproduct";
     }
 
 
