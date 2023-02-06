@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class ProduktSertvice{
+public class ProductService {
 
 
     //Widok strony szablon

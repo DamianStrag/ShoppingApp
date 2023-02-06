@@ -20,10 +20,10 @@
   </tr>
 <c:forEach items="${products}" var="product">
 <tr>
-<td>${product.nazwa}</td>
-<td>${product.jednostka}</td>
-<td>${product.ilosc}</td>
-<td>${product.cena}</td>
+<td>${product.name}</td>
+<td>${product.unit}</td>
+<td>${product.quantity}</td>
+<td>${product.price}</td>
 <td>${product.link}</td>
 <td><a class ="btn btn-sm btn-danger"  href="/products/delete?productId=${product.id}">usun</a></td>
 <td><a class ="btn btn-sm btn-info" href="/products/edit?productId=${product.id}">edit</a></td>

@@ -1,5 +1,5 @@
 package pl.zakupy.model;
 
-public enum Jednoski {
+public enum Unit {
     KILOGRAMY,SZTUKI,LITRY
 }

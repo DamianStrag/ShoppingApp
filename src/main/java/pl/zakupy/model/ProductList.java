@@ -4,11 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class ListaProduktow {
+public class ProductList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,8 +17,14 @@ public class ListaProduktow {
 
     private LocalDate data;
 
-//    @ManyToOne
-   // private Pozycje pozycje;
+    @OneToMany
+    private List<Position> position;
+
+    @Transient
+    private int[] array;
 
 
+    public int[] getTablica() {
+        return array;
+    }
 }

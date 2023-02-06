@@ -11,25 +11,25 @@
 <div class="container">
 <form action="/saveproduct" method = "post">
 
-    <input  name = "id" type = "hidden" value="${product.id}"/>
+    <input class="form-control" name="id" type="hidden" value="${product.id}"/>
+<div class="form-group">
+    <label>Name</label>
+    <input class="form-control" placeholder="nazwa" name ="name" value="${product.name}"/>
+</div>
+<div class="form-group">
+    <label>Jednostka</label>
+    <input class="form-control" placeholder="jednostka" name="unit" value="${product.unit}"/>
+</div>
+<div class="form-group">
+    <label>Ilosc</label>
+    <input class="form-control" name="quantity" type="number" min="1" lang="en" value="${product.quantity}"/>
+</div>
+<div class="form-group">
+    <label>Link</label>
+    <input class="form-control" name="link" value="${product.link}"/>
+</div>
 
-    Name:
-    <input  name ="nazwa" value="${product.nazwa}"/>
-
-
-    Jednostka:
-    <input name="jednostka" value="${product.jednostka}"/>
-
-
-    Ilosc:
-    <input name="ilosc" type = "number" lang = "en" value="${product.ilosc}"/>
-
-
-    Link:
-    <input name="link" value="${product.link}"/>
-
-
-    <button class ="btn btn-sm btn-info" type="submit">Zapisz</button>
+    <button class="btn btn-sm btn-info" type="submit">Zapisz</button>
 
 </form>
 </div>
