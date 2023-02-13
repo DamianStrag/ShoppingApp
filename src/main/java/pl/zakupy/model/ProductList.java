@@ -1,6 +1,9 @@
 package pl.zakupy.model;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,9 +18,11 @@ public class ProductList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate data;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
+    @Fetch( FetchMode.JOIN)
     private List<Position> position;
 
     @Transient

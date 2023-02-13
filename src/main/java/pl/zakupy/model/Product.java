@@ -28,6 +28,7 @@ public class Product {
     @OneToMany
     private List<Position> positionList;
 
+
     public Product(int id, String name, String unit, double ilosc, double price, String link){
         this.id = id;
         this.name = name;

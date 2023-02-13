@@ -1,6 +1,8 @@
 package pl.zakupy.model;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
@@ -19,10 +21,13 @@ public class Position {
 
     private boolean whetherBought;
 
+
    @ManyToOne
-    private Product product;
+   @Fetch( FetchMode.JOIN)
+   private Product product;
 
     @ManyToOne
+    @Fetch( FetchMode.JOIN)
     private ProductList productList;
 
 }
