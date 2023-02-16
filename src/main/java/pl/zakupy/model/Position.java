@@ -26,7 +26,7 @@ public class Position {
    @Fetch( FetchMode.JOIN)
    private Product product;
 
-    @ManyToOne
+    @OneToOne
     @Fetch( FetchMode.JOIN)
     private ProductList productList;
 

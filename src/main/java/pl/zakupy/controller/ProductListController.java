@@ -43,6 +43,7 @@ public class ProductListController {
         ProductList productList = new ProductList();
         productList.setId(0);
         model.addAttribute("productList",productList);
+        model.addAttribute("action","savelist");
         Iterable<Product> listapro = productRepository.findAll();
         List<ProductSelectItem> listSelect = new ArrayList<>();
         for (Object p : listapro){
@@ -53,6 +54,24 @@ public class ProductListController {
         model.addAttribute("products",listSelect);
 
         return"addlist";
+    }
+
+    @PostMapping("/save")
+    public String saveEdit(@ModelAttribute ProductList productList) {
+        productList.setPosition(new ArrayList<>());
+        for (Integer p : productList.getTablica()) {
+            Optional<Product> product = productRepository.findById(p);
+            boolean aBoolean = positionRepository.existsByProductIdAndProductListId(p, productList.getId());
+            if (product.isPresent()) {
+                Position position = new Position(0, 1, false, product.get(), productList);
+                productList.getPosition().add(position);
+
+                positionRepository.save(position);
+            }
+
+        }
+        productListRepository.save(productList);
+        return "redirect:/lists";
     }
 
       @PostMapping("/savelist")//zrobic nowego endpoit dla zapisu edycji bo przy edycji czysci nam liste
@@ -79,10 +98,14 @@ public class ProductListController {
       @GetMapping("/lists/delete")
     public String deleteProductList(@RequestParam int id){
         Optional<ProductList> elem = productListRepository.findById(id);
-        //if (elem.isPresent()){
-          //  elem.get().getPosition().forEach(s -> positionRepository.deleteById(s.getId()));
-     //   }
-        productListRepository.deleteById(id);
+
+
+        if (elem.isPresent()){
+          elem.get().getPosition().forEach(s -> positionRepository.deleteById(s.getId()));
+       }
+
+        productListRepository.delete(elem.get());
+
         return "redirect:/lists";
       }
 
@@ -90,6 +113,7 @@ public class ProductListController {
     public String editProductList(@RequestParam int id,Model model){
         ProductList productList = productListRepository.findById(id).get();
           model.addAttribute("productList",productList);
+          model.addAttribute("action", "save");
           Iterable prodlist = productRepository.findAll();
           List<ProductSelectItem> selectList = new ArrayList<>();
 

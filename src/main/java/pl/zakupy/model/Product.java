@@ -25,7 +25,7 @@ public class Product {
 
     private String link;
 
-    @OneToMany
+    @OneToMany()
     private List<Position> positionList;
 
 

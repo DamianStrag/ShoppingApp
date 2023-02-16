@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-<form action="/savelist" method = "post">
+<form action="/${action}" method = "post">
 
     <input class="form-control" name="id" type="hidden" value="${productList.id}"/>
 <div class="form-group">
