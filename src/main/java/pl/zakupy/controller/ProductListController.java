@@ -133,6 +133,13 @@ public class ProductListController {
         return"addlist";
       }
 
+      @GetMapping("/lists/details")
+    public String getDetails(@RequestParam int id, Model model){
+          ProductList productList1 = productListRepository.findById(id).get();
+          model.addAttribute("productList" ,productList1);
+          return "details";
+      }
+
 
 
 }

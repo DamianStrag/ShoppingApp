@@ -5,9 +5,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Product</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <jsp:include page="head.jsp"/>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <div class="container">
 <form action="/saveproduct" method = "post">
 
@@ -33,5 +34,6 @@
 
 </form>
 </div>
+<jsp:include page="scripts.jsp"/>
 </body>
 </html>
